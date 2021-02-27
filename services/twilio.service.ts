@@ -1,8 +1,8 @@
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
-const client = require('twilio')(accountSid, authToken);
+const client = require('services/twilio.service')(accountSid, authToken);
 
-export class Twilio {
+export class TwilioService {
 
     private sendSMS(): void {
         client.messages
