@@ -1,4 +1,4 @@
-const Guest = require('../models/Guests');
+const Guest = require('../models/guests');
 
 
 export class MongodbRepository {
