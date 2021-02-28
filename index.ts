@@ -13,7 +13,8 @@ app.use(bodyParser.json());
 PersistRepository.init();
 
 app.get('/', function (req, res) {
-  res.send('Hello World!!')
+  res.send('Hello World!' +
+      '')
 })
 
 app.use('/guests', guests);
