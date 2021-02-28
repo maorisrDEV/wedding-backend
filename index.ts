@@ -1,6 +1,15 @@
-import {PersistRepository} from "./repository/persist.repository";
 import bodyParser from 'body-parser'
 import express from 'express';
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb+srv://maor:34143414@cluster0.qxxnl.mongodb.net/wedding', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true
+}).then(() => {
+    console.log('MongoDB connected');
+});
 
 const guests = require('./routes/guests.router');
 const app = express();
@@ -10,11 +19,9 @@ app.use(cors());
 // app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-PersistRepository.init();
 
 app.get('/', function (req, res) {
-    res.send('Hello World!' +
-        '')
+    res.send('Hello World!')
 })
 
 app.use('/guests', guests);

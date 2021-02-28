@@ -1,16 +1,21 @@
-import {PersistRepository} from "../repository/persist.repository";
+import {MongodbRepository} from "../repository/mongodb.repository";
 
 export class GuestsController {
 
     public static async getById(req, res, next) {
         const {id} = req?.body || {id: '0527505776'};
-        const response = await PersistRepository.getItem(id);
+        const response = await MongodbRepository.getItem(id);
         res.json(response);
     }
 
     public static async setGuests(req, res, next) {
-        const {id, numOfGuests, willArrive} = req?.body || {id: '0527505776', numOfGuests: 1, willArrive: 'yes'};
-        const response = await PersistRepository.setItem(id,{numOfGuests, willArrive});
+        const object = {
+            name: 'maor',
+            phoneNumber: '0527505776',
+            amountOfGuests: 1,
+            willArrive: 'yes'
+        };
+        const response = await MongodbRepository.setItem(object);
         res.json(response);
     }
 
