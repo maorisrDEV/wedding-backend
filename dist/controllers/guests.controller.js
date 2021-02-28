@@ -14,7 +14,7 @@ const persist_repository_1 = require("../repository/persist.repository");
 class GuestsController {
     static getById(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = (req === null || req === void 0 ? void 0 : req.body) || { id: '0527505776' };
+            const { id } = (req === null || req === void 0 ? void 0 : req.body) || { id: '' };
             const response = yield persist_repository_1.PersistRepository.getItem(id);
             res.json(response);
         });
