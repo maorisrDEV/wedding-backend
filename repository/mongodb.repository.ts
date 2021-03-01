@@ -8,7 +8,7 @@ export class MongodbRepository {
         return await instance.save()
     }
 
-    public static async getItem(key: string) {
+    public static async getItem(id: string) {
         return await Guest.find();
     }
 

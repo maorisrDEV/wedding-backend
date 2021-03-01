@@ -10,8 +10,8 @@ export class GuestsController {
 
     public static async setGuests(req, res, next) {
         const object = {
-            name: 'maor',
-            phoneNumber: '0527505776',
+            name: 'omri',
+            phoneNumber: '0524599427',
             amountOfGuests: 1,
             willArrive: 'yes'
         };

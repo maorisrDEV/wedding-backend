@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser'
 import express from 'express';
 const mongoose = require('mongoose');
+const guests = require('./routes/guests.router');
 
 mongoose.connect('mongodb+srv://maor:34143414@cluster0.qxxnl.mongodb.net/wedding', {
     useNewUrlParser: true,
@@ -11,7 +12,6 @@ mongoose.connect('mongodb+srv://maor:34143414@cluster0.qxxnl.mongodb.net/wedding
     console.log('MongoDB connected');
 });
 
-const guests = require('./routes/guests.router');
 const app = express();
 const cors = require('cors')
 
