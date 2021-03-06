@@ -2,20 +2,15 @@ import {MongodbRepository} from "../repository/mongodb.repository";
 
 export class GuestsController {
 
-    public static async getById(req, res, next) {
-        const {id} = req?.body || {id: '0527505776'};
-        const response = await MongodbRepository.getItem(id);
+    public static async getGuestById(req, res) {
+        const {id} = req?.body;
+        const response = await MongodbRepository.getGuestById(id);
         res.json(response);
     }
 
-    public static async setGuests(req, res, next) {
-        const object = {
-            name: 'omri',
-            phoneNumber: '0524599427',
-            amountOfGuests: 1,
-            willArrive: 'yes'
-        };
-        const response = await MongodbRepository.setItem(object);
+    public static async updateGuestData(req, res) {
+        const {_id, name, phoneNumber, amountOfGuests, willArrive, message } = req?.body;
+        const response = await MongodbRepository.updateGuestData({_id, name, phoneNumber, amountOfGuests, willArrive, message });
         res.json(response);
     }
 

@@ -1,3 +1,5 @@
+import {IGuest} from "../models/interfaces";
+
 const mongoose = require('mongoose');
 const Guest = require('../models/guests');
 
@@ -14,13 +16,15 @@ export class MongodbRepository {
         console.log('MongoDB connected');
     }
 
-    public static async setItem(object: any) {
-        const instance = new Guest(object);
-        return await instance.save()
+    public static async getGuestById(id: string) {
+        return await Guest.findById(id);
     }
 
-    public static async getItem(id: string) {
-        return await Guest.find({id:  id});
+    public static async updateGuestData(guest: IGuest) {
+        const query = {'_id': guest._id};
+        return await Guest.findOneAndUpdate(query, guest);
     }
+
 
 }
+
