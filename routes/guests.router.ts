@@ -11,4 +11,8 @@ router.post('/updateGuestData', (req, res, next) => {
    GuestsController.updateGuestData(req, res);
 });
 
+router.post('/increaseVisits', (req, res, next) => {
+   GuestsController.increaseVisits(req, res);
+});
+
 module.exports = router;

@@ -5,8 +5,10 @@ const schema = new mongoose.Schema({
     phoneNumber: String,
     amountOfGuests: Number,
     willArrive: String,
-    message: String
-})
+    message: String,
+    visits: Number,
+
+}, { timestamps: true })
 
 module.exports = mongoose.model('Guests', schema);
 

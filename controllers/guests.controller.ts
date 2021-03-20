@@ -9,8 +9,14 @@ export class GuestsController {
     }
 
     public static async updateGuestData(req, res) {
-        const {_id, name, phoneNumber, amountOfGuests, willArrive, message } = req?.body;
-        const response = await MongodbRepository.updateGuestData({_id, name, phoneNumber, amountOfGuests, willArrive, message });
+        const {_id, name, phoneNumber, amountOfGuests, willArrive, message, visits } = req?.body;
+        const response = await MongodbRepository.updateGuestData({_id, name, phoneNumber, amountOfGuests, willArrive, message, visits });
+        res.json(response);
+    }
+
+    public static async increaseVisits(req, res) {
+        const {id} = req?.body;
+        const response = await MongodbRepository.increaseVisits(id);
         res.json(response);
     }
 
