@@ -15,4 +15,17 @@ router.post('/increaseVisits', (req, res, next) => {
    GuestsController.increaseVisits(req, res);
 });
 
+router.get('/currentStatus', ((req, res) => {
+   GuestsController.currentStatus(req, res);
+}))
+
+router.get('/statistics', ((req, res) => {
+   GuestsController.statistics(req, res);
+}))
+
+router.get('/downloadCsv', ((req, res) => {
+   GuestsController.downloadCsv(req, res);
+}))
+
+
 module.exports = router;

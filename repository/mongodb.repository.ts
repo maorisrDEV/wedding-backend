@@ -1,5 +1,6 @@
-import {IGuest} from "../models/interfaces";
+import {IGuest, IStatistics} from "../models/interfaces";
 
+const json2csv = require('json2csv').parse;
 const mongoose = require('mongoose');
 const Guest = require('../models/guests');
 
@@ -46,6 +47,83 @@ export class MongodbRepository {
             return null;
         }
     }
+
+    public static async currentStatus(): Promise<IGuest[]> {
+        try {
+            return await Guest.find({});
+        } catch (err) {
+            console.log(`currentStatus: got error, err: ${err}`);
+            return null;
+        }
+    }
+
+    public static async statistics(): Promise<IStatistics> {
+        try {
+            //region query db
+            const amountOfDocsQuery = await Guest.find({});
+            const amountOfInvitedGuestsQuery = await Guest.aggregate([
+                {$group: {_id: null, amount: {$sum: "$amountOfInvited"}}}
+            ]);
+            const arrivingGuestsQuery = await Guest.aggregate([
+                {$match: {willArrive: {$eq: "yes"}}},
+                {$group: {_id: null, amount: {$sum: "$amountOfGuests"}}}
+            ]);
+            const arrivingInvitedGuestsQuery = await Guest.aggregate([
+                {$match: {willArrive: {$eq: "yes"}}},
+                {$group: {_id: null, amount: {$sum: "$amountOfInvited"}}}
+            ]);
+            const notArrivingGuestsQuery = await Guest.aggregate([
+                {$match: {willArrive: {$eq: "no"}}},
+                {$group: {_id: null, amount: {$sum: "$amountOfInvited"}}}
+            ]);
+            const respondedDocsQuery = await Guest.find({willArrive: {$nin: [null, ""]}});
+            const respondedGuestsQuery = await Guest.aggregate([
+                {$match: {willArrive: {$nin: [null, ""]}}},
+                {$group: {_id: null, amount: {$sum: "$amountOfInvited"}}}
+            ]);
+            //endregion
+
+            //region building response parameters
+            const amountOfDocs = amountOfDocsQuery.length || 0;
+            const amountOfInvitedGuests = amountOfInvitedGuestsQuery[0]?.amount || 0;
+            const arrivingGuests = arrivingGuestsQuery[0]?.amount || 0;
+            const arrivingInvitedGuests = arrivingInvitedGuestsQuery[0]?.amount || 0;
+            const notArrivingGuests = notArrivingGuestsQuery[0]?.amount || 0;
+            const respondedGuests = respondedGuestsQuery[0]?.amount || 0;
+            const notRespondedGuests = Math.abs(amountOfInvitedGuests - respondedGuests);
+            const respondedDocs = respondedDocsQuery.length || 0;
+            const notRespondedDocs = amountOfDocs - respondedDocs;
+            //endregion
+
+            return {
+                amountOfDocs,
+                amountOfInvitedGuests,
+                arrivingGuests,
+                arrivingInvitedGuests,
+                notArrivingGuests,
+                respondedGuests,
+                notRespondedGuests,
+                respondedDocs,
+                notRespondedDocs
+            };
+        } catch (err) {
+            console.log(`statistics: got error, err: ${err}`);
+            return null;
+        }
+    }
+
+    public static async downloadCsv(): Promise<any> {
+        try {
+            const docs = await Guest.find({});
+            const fields = ['name', 'phoneNumber', 'willArrive', 'message', 'updatedAt', 'visits', 'amountOfGuests', 'amountOfInvited'];
+            const fieldNames = ['name', 'phoneNumber', 'willArrive', 'message', 'updatedAt', 'visits', 'amountOfGuests', 'amountOfInvited'];
+            return json2csv({ data: docs, fields: fields, fieldNames: fieldNames });
+        } catch (err) {
+            console.log(`downloadCsv: got error, err: ${err}`);
+            return null;
+        }
+    }
+
 
 }
 
