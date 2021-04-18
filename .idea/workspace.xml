@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02abe4b9-7129-4f08-be81-099d4f5b4076" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/guests.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/guests.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/guests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/models/guests.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/interfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/models/interfaces.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/mongodb.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/repository/mongodb.repository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/guests.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/routes/guests.router.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/twilio.service.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +60,7 @@
       <workItem from="1614452929659" duration="6896000" />
       <workItem from="1614535593630" duration="39721000" />
       <workItem from="1617456810499" duration="10822000" />
+      <workItem from="1618770238856" duration="436000" />
     </task>
     <task id="LOCAL‎00001" summary="my first commit">
       <created>1614453117567</created>
@@ -207,7 +200,13 @@
       <option name="presentableId" value="LOCAL‎00023" />
       <updated>1616261413934</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL‎00024" summary="added apis for status proj">
+      <created>1618770271155</created>
+      <option name="number" value="LOCAL‎00024" />
+      <option name="presentableId" value="LOCAL‎00024" />
+      <updated>1618770271155</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,17 +215,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="my first commit" />
     <MESSAGE value="temp commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="temp commit" />
+    <MESSAGE value="added apis for status proj" />
+    <option name="LAST_COMMIT_MESSAGE" value="added apis for status proj" />
   </component>
   <component name="WindowStateProjectService">
     <state x="699" y="296" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614957819795">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="699" y="296" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1614957819795" />
-    <state x="503" y="0" key="CommitChangelistDialog2" timestamp="1616261412323">
+    <state x="503" y="0" key="CommitChangelistDialog2" timestamp="1618770267956">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="503" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1616261412323" />
+    <state x="503" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1618770267956" />
     <state width="1208" height="761" key="DebuggerActiveHint" timestamp="1618056731059">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -299,10 +299,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="351" y="78" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1615017637933" />
-    <state x="452" y="183" key="Vcs.Push.Dialog.v2" timestamp="1616261416118">
+    <state x="452" y="183" key="Vcs.Push.Dialog.v2" timestamp="1618770518995">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1616261416118" />
+    <state x="452" y="183" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1618770518995" />
     <state x="605" y="168" width="710" height="704" key="find.popup" timestamp="1614537411998">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
