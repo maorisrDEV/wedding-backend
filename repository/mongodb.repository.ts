@@ -1,4 +1,4 @@
-import {IGuest, IStatistics} from "../models/interfaces";
+import {IGuest, IInsertGuest, IStatistics} from "../models/interfaces";
 
 const json2csv = require('json2csv').parse;
 const mongoose = require('mongoose');
@@ -120,6 +120,16 @@ export class MongodbRepository {
             return json2csv({ data: docs, fields: fields, fieldNames: fieldNames });
         } catch (err) {
             console.log(`downloadCsv: got error, err: ${err}`);
+            return null;
+        }
+    }
+
+    public static async loadGuests(guests: IInsertGuest[]): Promise<any> {
+        try {
+           await Guest.collection.insert(guests);
+            console.log('success on insert guests');
+        } catch (err) {
+            console.log(`loadGuests: got error, err: ${err}`);
             return null;
         }
     }

@@ -9,15 +9,14 @@ export class GuestsController {
     }
 
     public static async updateGuestData(req, res) {
-        const {_id, name, phoneNumber, amountOfGuests, willArrive, message, visits} = req?.body;
+        const {_id, name, phoneNumber, amountOfGuests, willArrive, message} = req?.body;
         const response = await MongodbRepository.updateGuestData({
             _id,
             name,
             phoneNumber,
             amountOfGuests,
             willArrive,
-            message,
-            visits
+            message
         });
         res.json(response);
     }

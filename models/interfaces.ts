@@ -5,7 +5,13 @@ export interface IGuest {
     amountOfGuests: number;
     willArrive: string;
     message: string;
-    visits: number;
+    visits?: number;
+}
+
+export interface IInsertGuest {
+    name: string;
+    phoneNumber: string;
+    amountOfInvited: number;
 }
 
 export interface IStatistics {
